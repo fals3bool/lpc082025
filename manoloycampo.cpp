@@ -39,13 +39,22 @@
 
 using namespace std;
 
+int maxrain(const vector<int> &v, int i, bool sentido) {
+  if (sentido && i - 1 >= 0 && v[i - 1] <= v[i])
+    return maxrain(v, i - 1, sentido) + 1;
+  else if (!sentido && i + 1 < v.size() && v[i + 1] <= v[i])
+    return maxrain(v, i + 1, sentido) + 1;
+  else
+    return 1;
+}
+
 int maxrain(const vector<int> &v, int i) {
   int l, r;
   l = r = 0;
   if (i - 1 >= 0 && v[i - 1] <= v[i])
-    l = maxrain(v, i - 1);
+    l = maxrain(v, i - 1, true);
   if (i + 1 < v.size() && v[i + 1] <= v[i])
-    r = maxrain(v, i + 1);
+    r = maxrain(v, i + 1, false);
   return l + r + 1;
 }
 
