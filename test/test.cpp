@@ -45,12 +45,13 @@ int main(int argc, char **argv) {
 
     std::stringstream ss;
     ss << "./" << argv[1] << " < " << files[i] << " > ans.out";
+    int n = i / 2 + 1;
+
     if (system(ss.str().c_str())) {
-      std::cout << "Error en tiempo de ejecución.\n\n";
+      std::cout << "Test [" << n << "] Error en tiempo de ejecución.\n\n";
       return 1;
     }
 
-    int n = i / 2 + 1;
     if (check_answer(files[i + 1], "ans.out", n)) {
       std::cout << "Test [" << n << "] Pasado!\n";
     }
