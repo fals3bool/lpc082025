@@ -59,20 +59,21 @@ int main(void) {
   }
 
   vector<int16_t> sums;
-  for (int i = m - 1; i < n; i++) {
+  for (int i = 0; i <= n - m; i++) {
     int sum = 0;
     for (int j = 0; j < m; j++) {
-      sum += meses[i - j];
+      sum += meses[i + j];
     }
     sums.push_back(sum);
   }
 
   int16_t max = -32768;
-  int ri, rj;
+  int ri = 0, rj = 0;
   for (int i = 0; i < sums.size(); i++) {
     if (sums[i] > max) {
-      ri = i - m;
-      rj = i;
+      max = sums[i];
+      ri = i;
+      rj = i + m;
     }
   }
 
@@ -87,7 +88,7 @@ int main(void) {
 
   cout << ri + 1 << " " << rj << endl;
   cout << sums[ri] << endl;
-  cout << rm+1 << endl;
+  cout << rm + 1 << endl;
 
   return 0;
 }

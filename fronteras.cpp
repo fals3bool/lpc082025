@@ -92,6 +92,8 @@ int main(void) {
 
   for (string p : lim)
     cout << p << endl;
+  if(lim.size()==0)
+    cout << "NO" << endl;
 
   return 0;
 }

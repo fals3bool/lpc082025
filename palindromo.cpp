@@ -53,7 +53,7 @@ int main(void) {
   } while (next_permutation(s.begin(), s.end()));
 
   if (c == 0)
-    cout << "No es posible!";
+    cout << "No es posible!" << endl;
   else
     cout << c << endl;
 
